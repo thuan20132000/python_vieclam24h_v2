@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category,Occupation,Job
+from .models import Category,Occupation,Job,JobCollaborator
 # Register your models here.
 
 
@@ -22,3 +22,9 @@ class AdminJob(Job):
     pass
 
 admin.site.register(Job)
+
+
+
+class AdminJobCollaborator(JobCollaborator):
+    pass
+admin.site.register(JobCollaborator)
