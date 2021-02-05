@@ -5,10 +5,11 @@ from django.contrib import admin
 from .models import Category,Realestate
 
 
-class AdminRealestateCategory(Category):
-    pass
+class AdminRealestateCategory(admin.ModelAdmin):
+    list_display = ('name','slug','status','image')
 
-admin.site.register(Category)
+
+admin.site.register(Category,AdminRealestateCategory)
 
 
 

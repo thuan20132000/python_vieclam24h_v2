@@ -1,0 +1,16 @@
+
+
+<h1>dsfdsfdfsdfsd ecommerce</h1>
+
+{% extends "ecommerce/base.html" %}
+
+
+
+{% block content %}
+
+<h2> here is the list of items</h2>
+{% for item in items %}
+    {{item}}
+{% endfor %}
+
+{% endblock content %}

@@ -2,11 +2,11 @@
 
 
 
-<div>
-    <h1>Change</h1>
-</div>
+
 {% if app_list %}
   {% for app in app_list %}
+
+
     <div class="app-{{ app.app_label }} module{% if app.app_url in request.path %} current-app{% endif %}">
       <table>
         <caption>
