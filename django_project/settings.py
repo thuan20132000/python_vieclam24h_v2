@@ -40,11 +40,15 @@ INSTALLED_APPS = [
     # 3rd
     "django.contrib.staticfiles", # Required for GraphiQL
     "graphene_django",
+    "django_seed",
+    "taggit",
+    "django_quill",
 
     # local
     'vieclam24h',
     'realestate',
-    'ecommerce'
+    'ecommerce',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -132,10 +136,37 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 
 GRAPHENE = {
     "SCHEMA": "django_project.schema.schema"
+}
+
+
+
+QUILL_CONFIGS = {
+    'default':{
+        'theme': 'snow',
+        'modules': {
+            'syntax': True,
+            'toolbar': [
+                [
+                    {'font': []},
+                    {'header': []},
+                    {'align': []},
+                    'bold', 'italic', 'underline', 'strike', 'blockquote',
+                    {'color': []},
+                    {'background': []},
+                ],
+                # ['code-block', 'link'],
+                # ['clean'],
+                ['image']
+            ]
+        }
+    }
 }

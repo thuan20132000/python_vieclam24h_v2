@@ -1,0 +1,125 @@
+/*  */
+body{
+    font-size: 16px;
+
+}
+.row-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.block {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 12px;
+}
+
+
+.block.block__nav--primary {
+    background-color: #55acee;
+
+}
+
+.block__nav--secondary{
+    background-color:#7FDBFF ;
+}
+
+.block__nav--success{
+    background-color: #7FDBFF;
+}
+
+.block__nav--danger{
+    background-color: tomato;
+}
+
+.block__nav--warning{
+    background-color: yellow;
+}
+
+.block__nav--info{
+    background-color: turquoise;
+}
+
+
+.text--primary{
+    font-size: 22px;
+}
+.text--secondary{
+    font-size: 18px;
+}
+.text--success{
+    font-size: 16px;
+}
+
+.block__nav--hover:hover{
+    width: 140px;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    
+}
+
+
+.box-shadow{
+    box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+}
+
+.border-radius{
+    border-radius: 12px;
+}
+
+.block.block__border--radius12{
+    border-radius: 12px;
+}
+
+.flip-card {
+    max-width: 30rem;
+    height: 40rem;
+    margin: 0 auto;
+    perspective: 150rem;
+}
+
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card .front, .flip-card .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card .back {
+    transform: rotateY(180deg);
+}
+
+.flip-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

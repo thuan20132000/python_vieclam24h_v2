@@ -1,11 +1,18 @@
 
 from django.urls import path
-
-from .views import item_list
+from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 app_name = 'ecommerce'
 
 urlpatterns = [
-    path('',item_list,name='item-list')
+    path('',views.product_list,name='product_list'),
+    path('<slug:category_slug>/',views.product_list,name='product_list_by_category'),
+    path('<int:id>/<slug:slug>/',views.product_detail,name='product_detail'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )
