@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
 
 from django_quill.fields import QuillField
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -44,7 +45,7 @@ class CategoryType(models.Model):
 
     category = models.ForeignKey(
         Category,
-        related_name='post_category_type_category',
+        related_name='category_type',
         on_delete=models.CASCADE
     )
 
@@ -74,7 +75,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=10,choices=STATUS_CHOICES,default='pending')
-
+    views = models.IntegerField(default=0)
     tags = TaggableManager()
 
     category_type = models.ForeignKey(
@@ -86,6 +87,13 @@ class Post(models.Model):
 
     def __str__(self):
         return f"{self.id} - {self.title}"
+
+    
+    def get_absolute_url(self):
+        return reverse(
+            'blog:post_detail',
+            args=[self.slug]
+        )
 
 
 
@@ -99,7 +107,6 @@ class Comment(models.Model):
         ('hidden','hidden')
     )
     
-    title = models.CharField(max_length=150)
     content = models.TextField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -111,12 +118,7 @@ class Comment(models.Model):
         related_name='blog_comment'
     )
 
-    author = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='blog_comment_author'
-    )
-
+    email = models.EmailField(max_length=250)
 
     def __str__(self):
-        return f"{self.id} - {self.title}"
+        return f"{self.id} - {self.content} by  {self.email}"

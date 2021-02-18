@@ -1,0 +1,78 @@
+{% extends 'blog/layout/base.html' %}
+
+
+{% block content %}
+
+<h1 style="text-align: center;">
+    {{post.title}}
+</h1>
+
+<div class="container">
+
+
+    {% for tag in tags %}
+    <a href="{% url 'blog:post_list_by_tag' tag.slug %}">
+
+        <span class="badge bg-success">{{tag}}</span>
+    </a>
+    {% endfor %}
+
+    {{post.content.html|safe}}
+
+    <div class="d-flex flex-row-reverse bd-highlight">
+        <div class="p-2 bd-highlight">{{post.author}}</div>
+
+    </div>
+
+    <div class="post_comments">
+
+        <!-- <form action="POST">
+                {{comment_form.as_p}}
+                {% csrf_token %}
+                <p>
+                    <input type="submit" value="Add comment">
+                </p>
+            </form>
+
+             -->
+        <form action="{% url 'blog:post_detail' post.slug %}" method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" >
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Nội dung</label>
+                <textarea class="form-control" name="content"  rows="3"></textarea>
+            </div>
+            <div class="mb-3" style="display: flex;flex-direction: row;justify-content: flex-end;">
+                <button type="submit" class="btn btn-primary">
+                    Primary
+                </button>
+            </div>
+
+        </form>
+
+
+    </div>
+    {% with comments.count as total_comments %}
+        <h2>{{ total_comments }} bình luận </h2>
+    {% endwith %}
+
+    {% for comment in comments %}
+        <div class="comment">
+            <p class="info">
+                Bình luận {{forloop.counter}} bởi {{comment.email}} lúc 
+                <span class="text-muted">
+                    {{comment.created_at}}
+                    
+                </span>
+            </p>
+            {{comment.content}}
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
