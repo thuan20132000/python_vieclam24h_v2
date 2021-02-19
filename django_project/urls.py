@@ -32,7 +32,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("graphql", GraphQLView.as_view(graphiql=True)),
     path('ecommerce/',include('ecommerce.urls',namespace='ecommerce')),
-    path('blog/',include('blog.urls',namespace='blog')),
+    path('',include('blog.urls',namespace='blog')),
     path('sitemap.xml',sitemap,{'sitemaps':sitemaps},
         name='django.contrib.sitemaps.views.sitemap'
     ),
