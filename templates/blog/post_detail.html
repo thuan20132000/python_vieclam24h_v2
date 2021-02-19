@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<h1 style="text-align: center;">
+<h1 style="text-align: center; margin-top: 22px;">
     {{post.title}}
 </h1>
 
@@ -17,7 +17,10 @@
     </a>
     {% endfor %}
 
-    {{post.content.html|safe}}
+    <div style="background-color: antiquewhite;padding: 8px;">
+        {{post.content.html|safe}}
+
+    </div>
 
     <div class="d-flex flex-row-reverse bd-highlight">
         <div class="p-2 bd-highlight">{{post.author}}</div>
