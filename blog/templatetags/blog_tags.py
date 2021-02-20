@@ -12,7 +12,7 @@ def total_posts():
 
 
 @register.simple_tag
-def get_most_commented_posts(count=2):
+def get_most_commented_posts(count=3):
     return Post.objects.filter(status='published').annotate(
         total_comments=Count('blog_comment')
     ).order_by('-total_comments')[:count]

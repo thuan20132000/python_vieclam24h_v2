@@ -1,4 +1,3 @@
-
 {% load i18n static %}
 {% load blog_tags %}
 
@@ -13,10 +12,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Site Metas -->
-<title>Tech Blog - Stylish Magazine Blog Template</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
+<title>Askme - IT Blog</title>
+{% if post %}
+
+    <meta name="description" content="">
+    <meta name="keywords" content="{{  post.get_tag_list }}">
+
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="{{post.title}}">
+    <meta itemprop="description" content="{{post.summary}}">
+    <meta itemprop="image" content="{{post.image.url}}">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="{{ post.get_absolute_url }}">
+    <meta property="og:type" content="{{post.category_type.title}}">
+    <meta property="og:title" content="{{ post.title }}">
+    <meta property="og:description" content="{{ post.summary }}">
+    <meta property="og:image" content="{{ post.image.url  }}">
+
+{% endif %}
+
+
+<!-- Meta Tags Generated via https://heymeta.com -->
 
 <!-- Site Icons -->
 <link rel="shortcut icon" href=" {% static 'blog/images/favicon.ico' %} " type="image/x-icon" />
@@ -63,7 +81,7 @@
         <section class="section">
 
 
-               
+
             {% block content %}
 
             {% endblock content %}
@@ -71,13 +89,13 @@
 
 
         <footer class="footer">
-           
 
-                    <div class="text-center">
-                        <br>
-                        <div class="copyright">&copy; Blog. Design by <a href="#">ThuanTruong</a>.
 
-                    </div>
+            <div class="text-center">
+                <br>
+                <div class="copyright">&copy; Blog. Design by <a href="#">ThuanTruong</a>.
+
+                </div>
         </footer><!-- end footer -->
 
 

@@ -96,7 +96,8 @@ class Post(models.Model):
         )
 
 
-
+    def get_tag_list(self):
+        return ', '.join(t.name for t in self.tags.all())
 
 
 
