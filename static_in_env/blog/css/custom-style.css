@@ -132,8 +132,8 @@ body {
 .dropbtn {
     background-color: #139bea;
     color: white;
-    padding: 16px;
-    font-size: 16px;
+    padding: 8px;
+    font-size: 14px;
     border: none;
     cursor: pointer;
     min-width: 180px;
@@ -187,4 +187,9 @@ body {
 .form_search_wrap {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.main-content{
+    background-color: #fff1de;
+    padding: 18px 20px;
 }
