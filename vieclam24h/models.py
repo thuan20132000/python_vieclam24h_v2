@@ -69,6 +69,7 @@ class Category(models.Model):
 
 
 
+
 class Occupation(models.Model):
 
      STATUS_CHOICES = (
