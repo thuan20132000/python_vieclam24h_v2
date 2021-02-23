@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django_seed",
     "taggit",
     "django_quill",
+    "rest_framework",
 
     # local
     'vieclam24h',
@@ -53,6 +54,12 @@ INSTALLED_APPS = [
     'ecommerce',
     'blog',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

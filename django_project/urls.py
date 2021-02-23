@@ -36,5 +36,6 @@ urlpatterns = [
     path('sitemap.xml',sitemap,{'sitemaps':sitemaps},
         name='django.contrib.sitemaps.views.sitemap'
     ),
+    path('service247/',include('vieclam24h.urls',namespace='vieclam24h')),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
