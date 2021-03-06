@@ -13,7 +13,7 @@ from django.contrib.postgres.search import SearchVector
 def index(request):
     
     categories = Category.objects.all()
-    posts = Post.objects.filter(status='published').order_by('-created_at')
+    posts = Post.objects.filter(status='published').order_by('-id')
 
 
     return render(

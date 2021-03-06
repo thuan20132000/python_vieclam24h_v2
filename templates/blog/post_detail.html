@@ -21,7 +21,7 @@
             {% endfor %}
 
             <div class="main-content">
-                {{post.content.html|safe}}
+                {{post.content|safe}}
 
             </div>
 
@@ -32,15 +32,6 @@
 
             <div class="post_comments">
 
-                <!-- <form action="POST">
-                        {{comment_form.as_p}}
-                        {% csrf_token %}
-                        <p>
-                            <input type="submit" value="Add comment">
-                        </p>
-                    </form>
-        
-                     -->
                 <form action="{% url 'blog:post_detail' post.slug %}" method="post">
                     {% csrf_token %}
 

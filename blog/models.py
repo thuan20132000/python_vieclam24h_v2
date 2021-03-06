@@ -8,6 +8,8 @@ from taggit.managers import TaggableManager
 from django_quill.fields import QuillField
 from django.urls import reverse
 
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Category(models.Model):
     STATUS_CHOICES = (
@@ -71,7 +73,7 @@ class Post(models.Model):
     )
     image = models.ImageField(blank=True,upload_to='upload/blog/')
     summary = models.TextField()
-    content = QuillField()
+    content = RichTextUploadingField(blank=True,null=True)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=10,choices=STATUS_CHOICES,default='pending')
