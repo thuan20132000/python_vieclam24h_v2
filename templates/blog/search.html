@@ -1,0 +1,33 @@
+{% extends 'blog/layout/base.html' %}
+
+
+{% load blog_tags %}
+
+{% block titke %}Search {% endblock %}
+
+{% block content %}
+
+<div class="container">
+  
+    <div class="form_search_wrap" >
+    
+        <form class="d-flex form__wrap" method="POST" action="{% url 'blog:post_search'  %}">
+            {% csrf_token %}
+            <input class="form-control" name="search_value" type="search" placeholder="Tìm kiếm..." aria-label="Search">
+            <button class="btn btn-success" type="submit">Tìm kiếm</button>
+        </form>
+    
+    </div>
+    {% for post in results %}
+    <h4><a href="{{post.get_absolute_url}}">{{post.title}}</a></h4>
+    
+    {{post.content.html|safe|truncatewords_html:85}}
+    {% empty %}
+    <p>There are no results for your query</p>
+    
+    {% endfor %}
+    
+    
+</div>
+
+{% endblock %}
